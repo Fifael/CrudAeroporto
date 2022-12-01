@@ -12,6 +12,7 @@ public class Aviao extends Aeronave {
         super(GetId.getNextId(aviaos), marca, modelo);
         this.prefixo = prefixo;
         this.capacidade = capacidade;
+        aviaos.add(this);
         //this.campanhia= new ArrayList<>();
 
     }
@@ -44,11 +45,6 @@ public class Aviao extends Aeronave {
         return aviaos;
     }
 
-    public static void setAviao(Aviao aviao) {
-        aviaos.add(aviao);
-
-    }
-
     @Override
     public String toString() {
         return super.toString()
@@ -56,7 +52,7 @@ public class Aviao extends Aeronave {
                 + "\ncapacidade=" + capacidade
                 + "\ncampanhia=" + campanhia; 
             }
-            
+        
 
     public static Aviao getAviaoById(int id) throws Exception {
         for (Aviao aviao : aviaos) {

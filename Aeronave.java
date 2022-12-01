@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
-public abstract class Aeronave implements GetId  {
+public abstract class Aeronave implements GetId {
 
     private int id;
     private String marca;
     private String modelo;
-    private Arraylist<Voo> voos;
+    private ArrayList<Voo> voos;
 
     protected Aeronave(int id, String marca, String modelo) {
         this.id = id;
@@ -40,10 +40,16 @@ public abstract class Aeronave implements GetId  {
 
     public ArrayList<Voo> getVoos() {
         return voos;
-
-    
-
-}
+    }
 
     public void setVoo(Voo voo) {
+        this.voos.add(voo);
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id 
+        + "\nmarca=" + marca 
+        + "\nmodelo=" + modelo;
+    }
+}
