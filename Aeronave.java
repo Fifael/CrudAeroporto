@@ -38,11 +38,7 @@ public abstract class Aeronave implements GetId {
         this.modelo = modelo;
     }
 
-    public ArrayList<Voo> getVoos() {
-        return voos;
-    }
-
-    public void setVoo(Voo voo) {
+    public void setVoos(Voo voo) {
         this.voos.add(voo);
     }
 

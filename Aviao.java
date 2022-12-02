@@ -4,7 +4,9 @@ public class Aviao extends Aeronave {
 
     private String prefixo;
     private int capacidade;
+    private int idCampanhia;
     private Campanhia campanhia;
+    private ArrayList<Hangar> hangares;
 
     private static ArrayList<Aviao> aviaos = new ArrayList<>();
 
@@ -12,9 +14,9 @@ public class Aviao extends Aeronave {
         super(GetId.getNextId(aviaos), marca, modelo);
         this.prefixo = prefixo;
         this.capacidade = capacidade;
+        this.idCampanhia = campanhia.getId();
+        this.hangares = new ArrayList<>();
         aviaos.add(this);
-        //this.campanhia= new ArrayList<>();
-
     }
 
     public String getPrefixo() {
@@ -39,6 +41,10 @@ public class Aviao extends Aeronave {
 
     public void setCampanhia(Campanhia campanhia) {
         this.campanhia = campanhia;
+        this.idCampanhia = campanhia.getId();;
+    }
+    public void setHangar(Hangar hangar) {
+        this.hangares.add(hangar);
     }
 
     public static ArrayList<Aviao> getAviao() {

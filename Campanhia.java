@@ -13,6 +13,7 @@ public class Campanhia implements GetId  {
         this.id = GetId.getNextId(campanhias);
         this.nome = nome;
         this.cnpj = cnpj;
+        this.aviaos = new ArrayList<>();
         campanhias.add(this);
     }
 
@@ -46,6 +47,10 @@ public class Campanhia implements GetId  {
 
     public void setAviaos(ArrayList<Aviao> aviaos) {
         this.aviaos = aviaos;
+    }
+
+    public void setAviaos(Aviao aviao) {
+        this.aviaos.add(aviao);
     }
 
     public static ArrayList<Campanhia> getCampanhias() {
