@@ -10,7 +10,7 @@ public class Aviao extends Aeronave {
 
     private static ArrayList<Aviao> aviaos = new ArrayList<>();
 
-    private Aviao(String marca, String modelo, String prefixo, int capacidade) {
+    public Aviao(String marca, String modelo, String prefixo, int capacidade, Campanhia campanhia) {
         super(GetId.getNextId(aviaos), marca, modelo);
         this.prefixo = prefixo;
         this.capacidade = capacidade;
@@ -41,13 +41,13 @@ public class Aviao extends Aeronave {
 
     public void setCampanhia(Campanhia campanhia) {
         this.campanhia = campanhia;
-        this.idCampanhia = campanhia.getId();;
+        this.idCampanhia = campanhia.getId();
     }
     public void setHangar(Hangar hangar) {
         this.hangares.add(hangar);
     }
 
-    public static ArrayList<Aviao> getAviao() {
+    public static ArrayList<Aviao> getAviaos() {
         return aviaos;
     }
 
@@ -60,7 +60,7 @@ public class Aviao extends Aeronave {
             }
         
 
-    public static Aviao getAviaoById(int id) throws Exception {
+    public static Aviao getAviao(int id) throws Exception {
         for (Aviao aviao : aviaos) {
             if (aviao.getId() == id) {
                 return aviao;
@@ -69,8 +69,8 @@ public class Aviao extends Aeronave {
         throw new Exception("Aviao não encontrado");
     }
 
-    public static void excluir(int id) throws Exception {
-        Aviao aviao = getAviaoById(id);
+    public static void removeAviao(int id) throws Exception {
+        Aviao aviao = getAviao(id);
         aviaos.remove(aviao);
     }
 

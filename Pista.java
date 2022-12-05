@@ -7,7 +7,7 @@ public class Pista implements GetId{
 
     public static ArrayList<Pista> pistas = new ArrayList<Pista>();
 
-    public Pista(int id, String numero) {
+    public Pista(String numero) {
         this.id = GetId.getNextId(pistas);
         this.voos = new ArrayList<>();
         this.numero = numero;
@@ -30,7 +30,7 @@ public class Pista implements GetId{
         this.numero = numero;
     }
 
-    public ArrayList<Pista> getPistas() {
+    public static ArrayList<Pista> getPistas() {
         return pistas;
     }
 

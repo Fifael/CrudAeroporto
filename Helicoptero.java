@@ -2,49 +2,45 @@ import java.util.ArrayList;
 
 public class Helicoptero extends Aeronave {
 
-    private String cor;
-    private int capacidade;
+    private String corH;
+    private int capacidadeH;
 
     private static ArrayList<Helicoptero> helicopteros = new ArrayList<>();
 
-    public Helicoptero(String marca, String modelo, String cor, int capacidade) {
+    public Helicoptero(String marca, String modelo, String corH, int capacidadeH) {
         super(GetId.getNextId(helicopteros), marca, modelo);
-        this.cor = cor;
-        this.capacidade = capacidade;
+        this.corH = corH;
+        this.capacidadeH = capacidadeH;
     }
 
-    public String getCor() {
-        return cor;
+    public String getCorH() {
+        return corH;
     }
 
-    public void setCor(String cor) {
-        this.cor = cor;
+    public void setCorH(String corH) {
+        this.corH = corH;
     }
 
-    public int getCapacidade() {
-        return capacidade;
+    public int getCapacidadeH() {
+        return capacidadeH;
     }
 
-    public void setCapacidade(int capacidade) {
-        this.capacidade = capacidade;
+    public void setCapacidadeH(int capacidadeH) {
+        this.capacidadeH = capacidadeH;
     }
 
-    public static ArrayList<Helicoptero> getHelicoptero() {
+    public static ArrayList<Helicoptero> getHelicopteros() {
         return helicopteros;
-    }
-
-    public static void setHelicopteros(Helicoptero helicoptero) {
-        helicopteros.add(helicoptero);
     }
 
     @Override
     public String toString() {
         return super.toString()
-                + "\nCor=" + cor
-                + "\nCapacidade=" + capacidade;
+                + "\nCorH=" + corH
+                + "\nCapacidadeH=" + capacidadeH;
     }
 
-    public static Helicoptero getHelicopteroById(int id) throws Exception {
+    public static Helicoptero getHelicoptero(int id) throws Exception {
         for (Helicoptero helicoptero : helicopteros) {
             if (helicoptero.getId() == id) {
                 return helicoptero;
@@ -54,8 +50,8 @@ public class Helicoptero extends Aeronave {
     }
 
 
-public static void excluir(int id) throws Exception {
-    Helicoptero helicoptero = getHelicopteroById(id);
+public static void excluirHeli(int id) throws Exception {
+    Helicoptero helicoptero = getHelicoptero(id);
     helicopteros.remove(helicoptero);
 }
 }

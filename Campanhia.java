@@ -57,14 +57,26 @@ public class Campanhia implements GetId  {
         return campanhias;
     }
 
-    
-    
-    
+    public static Campanhia getCampanhia(int id) throws Exception {
+        for (Campanhia campanhia : campanhias) {
+            if (campanhia.getId() == id) {
+                return campanhia;
+            }
+        }
+        throw new Exception("Pista não econtrada");
 
+    }
 
+    public static void removeCampanhia(int id) throws Exception {
+        Campanhia campanhia = getCampanhia(id);
+        campanhias.remove(campanhia);
+    }
 
-
-
-
+    @Override
+    public String toString() {
+        return "\nId da Campanhia= " + id 
+         + "\nNome da Campanhia= " + nome
+         + "\nCnpj=" + cnpj ;
+    }
 
 }

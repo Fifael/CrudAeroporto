@@ -68,7 +68,7 @@ public class Hangar implements GetId{
         throw new Exception("Hangar não encontrado");
     }
 
-    public static void excluir(int id) throws Exception {
+    public static void removeHangar(int id) throws Exception {
         Hangar hangar = getHangarById(id);
         hangares.remove(hangar);
     }

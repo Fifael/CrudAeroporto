@@ -6,7 +6,7 @@ public class Jato extends Aeronave {
     private int velocidade;
     private static ArrayList<Jato> jatos = new ArrayList<>();
 
-    public Jato(int id, String marca, String modelo, String cor, int velocidade) {
+    public Jato(String marca, String modelo, String cor, int velocidade) {
         super(GetId.getNextId(jatos), marca, modelo);
         this.cor = cor;
         this.velocidade = velocidade;
