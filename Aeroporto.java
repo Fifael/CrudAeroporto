@@ -159,6 +159,16 @@ public class Aeroporto {
     }
 
     public static void cadastrarCompanhia(Scanner scanner){
+        try {
+        System.out.println("Cadastrar Companhia\n");
+        System.out.println("Digite o nome da Companhia: ");
+        String nome = scanner.next();
+        System.out.println("Digite o cnpj da Companhia: ");
+        String cnpj = scanner.next();
+        Campanhia campanhia = new Campanhia(nome, cnpj);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+    }
 
     }
 
