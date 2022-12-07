@@ -12,8 +12,8 @@ public class Hangar implements GetId{
 
     public static ArrayList<Hangar> hangares = new ArrayList<Hangar>();
 
-    public Hangar(int id, String local, Aviao aviao) {
-        this.id = id;
+    public Hangar(String local, Aviao aviao) {
+        this.id = GetId.getNextId(hangares);
         this.local = local;
         this.aviao = aviao;
         this.idAviao = aviao.getId();

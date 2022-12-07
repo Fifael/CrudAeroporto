@@ -63,7 +63,7 @@ public class Campanhia implements GetId  {
                 return campanhia;
             }
         }
-        throw new Exception("Pista não econtrada");
+        throw new Exception("Campanhia não econtrada");
 
     }
 

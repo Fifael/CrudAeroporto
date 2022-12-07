@@ -27,8 +27,9 @@ public class Aeroporto {
             System.out.println("||  13 - Remover Pista        ||");
             System.out.println("||  14 - Remover Voo          ||");
             System.out.println("||  15 - Remover Companhia    ||");
-            System.out.println("||  16 - Remover Hangar       ||");           
-            System.out.println("||  17 - Sair                 ||");
+            System.out.println("||  16 - Remover Hangar       ||"); 
+            System.out.println("||  17 - Listar Voo           ||");          
+            System.out.println("||  18 - Sair                 ||");
             System.out.println("||||||||||||||||||||||||||||||||");
             System.out.print("Opção: ");
             try {
@@ -86,13 +87,16 @@ public class Aeroporto {
                     removerHangar(scanner);
                     break;
                 case 17:
+                    listarVoo();
+                    break;
+                case 18:
                     sair();
                     break;
                 default:
                     System.out.println("Opção inválida!");
                     break;
             }
-        } while (opcao != 17);
+        } while (opcao != 18);
     }
 
     public static void cadastrarAeronave(Scanner scanner) {
@@ -155,7 +159,57 @@ public class Aeroporto {
     }
 
     public static void cadastrarVoo(Scanner scanner){
+        System.out.println("Cadastrar de Voo");
+        System.out.println("Digite o numero do voo : ");
+        String numero = scanner.next();
+        System.out.println("Digite a data de Voo: ");
+        String data = scanner.next();
+        System.out.println("digite a hora de Voo: ");
+        String hora= scanner.next();
+        System.out.println("digite a origem de Voo: ");
+        String origem= scanner.next();
+        System.out.println("digite o destino de Voo: ");
+        String destino= scanner.next();
+        System.out.println("digite o piloto de Voo: ");
+        String piloto= scanner.next();
+        System.out.println("digite a copiloto de Voo: ");
+        String copiloto= scanner.next();
+        System.out.println("digite a observação de Voo: ");
+        String observação= scanner.next();
+        try {
+            System.out.println("Digite o id da Pista para cadastra-la no VOO: ");
+            int idPista = scanner.nextInt();
+            Pista pista;
+            pista = Pista.getPista(idPista);
+            System.out.println("Digite o tipo de aeronave: ([A] Avião; [J] Jato; [H] Helicoptero) ");
+            String tipo1 = scanner.next().toUpperCase().trim().substring(0, 1);
+            switch (tipo1) {
+
+            case "A":
+            System.out.println("Digite o id da Aviao para cadastra-la no VOO: ");
+            int idAviao = scanner.nextInt();
+            Aviao aviao;
+            aviao = Aviao.getAviao(idAviao);
+            
+            break;
+
+            case "J":
+            System.out.println("Digite o id da Jato para cadastra no VOO: ");
+            int idJato = scanner.nextInt();
+            Jato jato;
+            jato = Jato.getJato(idJato);
+            break;
+
+            case "H":
+            System.out.println("Digite o id da Helicoptero para cadastra no VOO: ");
+            int idHelicoptero = scanner.nextInt();
+            Helicoptero helicoptero;
+            }
         
+        } catch (Exception e) {
+        System.out.println(e.getMessage());
+        }
+
     }
 
     public static void cadastrarCompanhia(Scanner scanner){
@@ -173,7 +227,19 @@ public class Aeroporto {
     }
 
     public static void cadastrarHangar(Scanner scanner){
-
+                System.out.println("Cadastrar Hangar");
+                System.out.println("Informe o local:");
+                String local = scanner.next();
+                System.out.println("Digite o id do Aviao para cadastrar ele no Hangar: ");
+                int idAviao = scanner.nextInt();
+                Aviao aviao;
+                try {
+                    aviao = Aviao.getAviao(idAviao);
+                    Hangar hangar = new Hangar(local, aviao);
+                    System.out.println("\nAviao cadastrado com sucesso!");
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
     }
 
     public static void listarAeronave() {
@@ -183,11 +249,11 @@ public class Aeroporto {
             System.out.println(aviao);
         }
 
-        System.out.println("Listar Moto");
+        System.out.println("Listar Jato");
         for (Jato jato : Jato.getJatos()) {
             System.out.println(jato);
         }
-        System.out.println("Listar Bicicleta");
+        System.out.println("Listar Helicoptero");
         for (Helicoptero helicoptero : Helicoptero.getHelicopteros()) {
             System.out.println(helicoptero);
         }
@@ -216,11 +282,10 @@ public class Aeroporto {
         } catch (Exception e) {
             System.out.println("Erro ao listar companhia. " + e.getMessage());
         }
-
     }
 
     public static void listarHangar() {
-
+        
         try {
             System.out.println("Listar Hangar");
             for (Hangar hangar : Hangar.getHangares()) {
@@ -229,8 +294,9 @@ public class Aeroporto {
         } catch (Exception e) {
             System.out.println("Erro ao listar Hangar. " + e.getMessage());
         }
-
     }
+
+    
 
     public static void removerAviao(Scanner scanner) {
         try {
@@ -299,6 +365,17 @@ public class Aeroporto {
             Hangar.removeHangar(id);
         } catch (Exception e) {
             System.out.println("Erro ao excluir Hangar. " + e.getMessage());
+        }
+    }
+
+    public static void listarVoo() {
+        try {
+            System.out.println("Listar Voo");
+            for (Voo voo : Voo.getVoos()) {
+                System.out.println(voo);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao listar voo. " + e.getMessage());
         }
     }
 

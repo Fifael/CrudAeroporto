@@ -6,6 +6,7 @@ public abstract class Aeronave implements GetId {
     private String marca;
     private String modelo;
     private ArrayList<Voo> voos;
+ 
 
     protected Aeronave(int id, String marca, String modelo) {
         this.id = id;

@@ -11,28 +11,39 @@ public class Voo implements GetId {
     private String piloto;
     private String copiloto;
     private String observacao;
-    private int idAeronave;
-    private Aeronave aeronave;
+    private int idAviao;
+    private Aviao aviao;
+    private int idHelicoptero;
+    private Helicoptero helicoptero;
+    private int idJato;
+    private Jato jato;
     private int idPista;
     private Pista pista;
 
     public static ArrayList<Voo> voos = new ArrayList<>();
 
-    public Voo(int id, String numero, String data, String hora, String origem,  String destino,  String piloto,  String copiloto,  String observacao, Aeronave aeronave, Pista pista){
+    public Voo(String numero, String data, String hora, String origem,  String destino,  String piloto,  String copiloto,  String observacao,Aviao aviao, Helicoptero helicoptero, Jato jato , Pista pista){
     this.id = GetId.getNextId(voos);
-    this.numero     = numero;
-    this.data       = data;
-    this.hora       = hora;
-    this.origem     = origem;
-    this.destino    = destino;
-    this.piloto     = piloto;
-    this.copiloto   = copiloto;
-    this.observacao = observacao;
-    this.idAeronave = aeronave.getId();
-    this.aeronave   = aeronave;
-    this.idPista    = pista.getId();
-    this.pista      = pista;
-    aeronave.setVoos(this);
+    this.numero        = numero;
+    this.data          = data;
+    this.hora          = hora;
+    this.origem        = origem;
+    this.destino       = destino;
+    this.piloto        = piloto;
+    this.copiloto      = copiloto;
+    this.observacao    = observacao;
+    this.idJato        = jato.getId();
+    this.idAviao       = aviao.getId();
+    this.idHelicoptero = helicoptero.getId();
+    this.aviao         = aviao;
+    this.helicoptero   = helicoptero;
+    this.jato          = jato;
+    this.idPista       = pista.getId();
+    this.pista         = pista;
+
+    helicoptero.setVoos(this);
+    jato.setVoos(this);
+    aviao.setVoos(this);
     pista.setVoos(this);
     voos.add(this);
     }
@@ -110,13 +121,31 @@ public class Voo implements GetId {
         this.observacao = observacao;
     }
 
-    public Aeronave getAeronave() {
-        return aeronave;
+    public Aviao getAviao() {
+        return aviao;
     }
 
-    public void setAeronave(Aeronave aeronave) {
-        this.aeronave = aeronave;
-        this.idAeronave = aeronave.getId();
+    public void setAviao(Aviao aviao) {
+        this.aviao = aviao;
+        this.idAviao = aviao.getId();
+    }
+
+    public Helicoptero getHelicoptero() {
+        return helicoptero;
+    }
+
+    public void setHelicoptero(Helicoptero helicoptero) {
+        this.helicoptero = helicoptero;
+        this.idHelicoptero = helicoptero.getId();
+    }
+
+    public Jato getJato() {
+        return jato;
+    }
+
+    public void setJato(Jato jato) {
+        this.jato = jato;
+        this.idJato = jato.getId();
     }
 
     public Pista getPista() {
@@ -158,7 +187,9 @@ public class Voo implements GetId {
         + "\npiloto = "  + piloto
         + "\ncopiloto = " + copiloto
         + "\nobservacao = " + observacao
-        + "\nAeronave = " + aeronave.getMarca() 
-        + "\nPista = " + pista.getNumero();
+        + "\naviao = " + aviao
+        + "\nhelicoptero = " + helicoptero
+        + "\njato = " + jato
+        + "\nNumero Pista = " + pista.getNumero();
     }
 }

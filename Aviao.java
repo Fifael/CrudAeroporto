@@ -15,6 +15,7 @@ public class Aviao extends Aeronave {
         this.prefixo = prefixo;
         this.capacidade = capacidade;
         this.idCampanhia = campanhia.getId();
+        this.campanhia = campanhia;
         this.hangares = new ArrayList<>();
         aviaos.add(this);
     }
